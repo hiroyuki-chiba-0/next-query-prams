@@ -17,6 +17,13 @@ export default function About(pageProps) {
           About Page
         </h1>
         <p>{pageProps.description}</p>
+        <div className={styles.grid}>
+          <next-link className={styles.card}>
+            <a href="/">
+              Back
+            </a>
+          </next-link>
+        </div>
       </main>
     </div>
   )
