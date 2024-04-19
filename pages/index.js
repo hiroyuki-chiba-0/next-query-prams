@@ -45,3 +45,12 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = async ({ res }) => {
+  res.setHeader('Cache-Control', 'public, max-age=10');
+  return {
+    props: {
+      description: 'This is the about page',
+    },
+  };
+};
