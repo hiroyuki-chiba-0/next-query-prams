@@ -1,6 +1,8 @@
 import styles from '../../styles/Home.module.css'
 
 export default function About(pageProps) {
+  console.log(pageProps)
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -21,10 +23,17 @@ export default function About(pageProps) {
 }
 
 export const getServerSideProps = async ({ res }) => {
-  res.setHeader('Cache-Control', 'public, max-age=10');
+  const result = await fetch("https://osina.microcms.io/api/v1/blogs/o3wcvyx-3", {
+    method: "GET", // HTTPメソッド
+    headers: {
+      "X-MICROCMS-API-KEY": "7SQn9ZBtNH7XWVGr18jTWmIdMjLbMMGiqNHu"
+    }
+  })
+
+
   return {
     props: {
-      description: 'This is the about page',
+      data: await result.json(),
     },
   };
 };
